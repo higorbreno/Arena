@@ -2,7 +2,7 @@
 // Controller (Arquivo de Cabeçalho)
 // 
 // Criação:     09 Nov 2011
-// Atualização: 15 Out 2021
+// Atualização: 05 Out 2021
 // Compilador:  Visual C++ 2019
 //
 // Descrição:   Faz a leitura de controles
@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_CONTROLLER_H_
 #define _PROGJOGOS_CONTROLLER_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #define INITGUID                                // inclusão dos GUIDs do DirectX
@@ -25,7 +19,6 @@
 
 // ---------------------------------------------------------------------------------
 
-#include "Types.h"                              // tipos específicos da engine
 #include <dinput.h>                             // direct input
 #include <xinput.h>                             // xinput
 #include <list>                                 // listas da STL
@@ -84,7 +77,7 @@ struct JoyPart
 
 // ---------------------------------------------------------------------------------
 
-class DLL Controller
+class Controller
 {
 private:
     LPDIRECTINPUT8 dInput;                      // objeto direct input

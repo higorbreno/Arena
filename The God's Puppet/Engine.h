@@ -17,12 +17,6 @@
 #ifndef _PROGJOGOS_ENGINE_H_
 #define _PROGJOGOS_ENGINE_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Game.h"                        // implementação do jogo
@@ -33,7 +27,7 @@
 
 // ---------------------------------------------------------------------------------
 
-class DLL Engine
+class Engine
 {
 private:
     static Timer timer;                  // medidor de tempo

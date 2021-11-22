@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_PARTICLES_H_
 #define _PROGJOGOS_PARTICLES_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Sprite.h"                                             // desenho de sprites
@@ -30,7 +24,7 @@ using std::list;
 
 // ---------------------------------------------------------------------------------
 
-struct DLL Generator
+struct Generator
 {
     string imgFile;                                             // arquivo de imagem da partícula
     float  angle;                                               // direção do emissor de partículas
@@ -52,7 +46,7 @@ struct Particle
 
 // ---------------------------------------------------------------------------------
 
-class DLL Particles
+class Particles
 {
 private:
     Generator config;                                           // configuração do gerador de partículas

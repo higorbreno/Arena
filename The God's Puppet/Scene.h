@@ -17,12 +17,6 @@
 #ifndef _PROGJOGOS_SCENE_H_
 #define _PROGJOGOS_SCENE_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 #include "Geometry.h"                           // bounding box dos objetos
 #include <list>                                 // lista da biblioteca STL 
 using std::list;                                // list sem precisar do std::
@@ -42,7 +36,7 @@ using ObjectDel  = pair<Object*, int>;          // <objeto,tipo> a deletar da ce
 
 // ---------------------------------------------------------------------------------
 
-class DLL Scene
+class Scene
 {
 private:
     list<Object*> statics;                      // lista de objetos estáticos

@@ -16,12 +16,6 @@
 #ifndef _PROGJOGOS_OBJECT_H_
 #define _PROGJOGOS_OBJECT_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // -----------------------------------------------------------------------------
 
 #include "Types.h"                              // usando os tipos personalizados da engine
@@ -31,7 +25,7 @@
 
 // -----------------------------------------------------------------------------
 
-class DLL Object
+class Object
 {
 private:
     float posX, posY, posZ;                     // coordenadas (x,y,z)

@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_ANIMATION_H_
 #define _PROGJOGOS_ANIMATION_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Sprite.h"              // tipo sprite para renderização
@@ -37,7 +31,7 @@ using HashTable = unordered_map<uint, AnimSeq>;
 
 // ---------------------------------------------------------------------------------
 
-class DLL Animation
+class Animation
 {
 private:
     uint  iniFrame;             // quadro inicial da seqüência

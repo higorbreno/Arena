@@ -13,12 +13,6 @@
 #ifndef _PROGJOGOS_GRAPHICS_H_
 #define _PROGJOGOS_GRAPHICS_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // --------------------------------------------------------------------------------
 // Inclusões
 
@@ -29,7 +23,7 @@
 
 // --------------------------------------------------------------------------------
 
-class DLL Graphics
+class Graphics
 {
 private:    
     IDXGISwapChain             * swapChain;                 // swap chain             

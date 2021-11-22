@@ -17,12 +17,6 @@
 #ifndef _PROGJOGOS_GAME_H_
 #define _PROGJOGOS_GAME_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Types.h"
@@ -30,7 +24,7 @@
 
 // ---------------------------------------------------------------------------------
 
-class DLL Game
+class Game
 {
 private:
     static Canvas world;                            // área do jogo

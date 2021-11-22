@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_AUDIO_H_
 #define _PROGJOGOS_AUDIO_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Sound.h"                                          // guarda o som no formato WAVE
@@ -30,7 +24,7 @@ using std::string;
 
 // ---------------------------------------------------------------------------------
 
-class DLL Audio
+class Audio
 {
 private:
     IXAudio2* audioEngine;                                  // sistema de áudio (engine)

@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_SOUND_H_
 #define _PROGJOGOS_SOUND_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Types.h"
@@ -27,7 +21,7 @@ using std::string;
 
 // ---------------------------------------------------------------------------------
 
-class DLL Sound
+class Sound
 {
 private:
     WAVEFORMATEXTENSIBLE format;                        // formato do arquivo .wav

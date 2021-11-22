@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_IMAGE_H_
 #define _PROGJOGOS_IMAGE_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 // Inclusões
 
@@ -28,7 +22,7 @@ using std::string;        // classe pode ser usada sem std::
 
 // ---------------------------------------------------------------------------------
 
-class DLL Image
+class Image
 {
 private:
     ID3D11ShaderResourceView * textureView;      // view associada a textura

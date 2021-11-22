@@ -2,7 +2,7 @@
 // Types (Arquivo de Cabeçalho)
 // 
 // Criação:     02 Abr 2011
-// Atualização: 15 Nov 2021
+// Atualização: 01 Nov 2021
 // Compilador:  Visual C++ 2019
 //
 // Descrição:   Isola os tipos específicos da plataforma fornecendo tipos
@@ -12,15 +12,6 @@
 
 #ifndef _PROGJOGOS_TYPES_H_
 #define _PROGJOGOS_TYPES_H_
-
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
-// desabilita mensagem dll-interface para membros da STL
-#pragma warning(disable: 4251)
 
 // nomes para tipos padrões da linguagem C++ usados na engine
 using uchar  = unsigned char;
@@ -38,7 +29,7 @@ struct Canvas
     float centerY;      // centro da área do jogo no eixo y
 };
 
-struct DLL ViewPort
+struct ViewPort
 {
     float left;         // coordenada x1
     float top;          // coordenada y1

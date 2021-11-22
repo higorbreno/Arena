@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_RANDOM_H_
 #define _PROGJOGOS_RANDOM_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // -------------------------------------------------------------------------------
 
 #include "Types.h"                          // tipos específicos da engine
@@ -29,7 +23,7 @@ using std::uniform_real_distribution;
 
 // -------------------------------------------------------------------------------
 
-class DLL Random
+class Random
 {
 protected:
     static random_device seed;              // gerador não-determinístico
@@ -38,7 +32,7 @@ protected:
 
 // -------------------------------------------------------------------------------
 
-class DLL RandI : public Random
+class RandI : public Random
 {
 private:
     uniform_int_distribution<int> dist;     // distribuição uniforme
@@ -50,7 +44,7 @@ public:
 
 // -------------------------------------------------------------------------------
 
-class DLL RandF : public Random
+class RandF : public Random
 {
 private:
     uniform_real_distribution<float> dist;  // distribuição uniforme

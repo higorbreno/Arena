@@ -1,8 +1,8 @@
 /**********************************************************************************
 // Vector (Arquivo de Cabeçalho)
-// 
+//
 // Criação:     18 Nov 2011
-// Atualização: 25 Out 2021
+// Atualização: 13 Out 2021
 // Compilador:  Visual C++ 2019
 //
 // Descrição:   Classe para representar um vetor
@@ -12,66 +12,78 @@
 #ifndef _PROGJOGOS_VECTOR_H_
 #define _PROGJOGOS_VECTOR_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // --------------------------------------------------------------------------------
 
 #include <cmath>
 
 // --------------------------------------------------------------------------------
 
-class DLL Vector
+class Vector
 {
 private:
     static const double PI;             // constante PI
+    float x, y;
     float angle;                        // ângulo do vetor com o eixo x
     float magnitude;                    // magnitude do vetor
 
 public:
-    Vector();                           // construtor padrão
-    Vector(float ang, float mag);       // construtor com ângulo e magnitude
 
-    void Scale(float factor);           // amplia ou reduz vetor por um fator
-    void ScaleTo(float value);          // ajusta rotação para valor indicado
+    Vector();                           // construtor padrão
+    //Vector(float ang, float mag);       // construtor com ângulo e magnitude
+
+    void setXY(float x, float y);
+    void setPolar(float ang, float mag);
     void Rotate(float theta);           // rotaciona vetor por ângulo em graus
     void RotateTo(float value);         // ajusta rotação para valor indicado
-    void Add(const Vector& v);          // adiciona vetor recebido por parâmetro
-    
-    float Angle() const;                // retorna ângulo do vetor
-    float Magnitude() const;            // retorna magnitude do vetor
-    float XComponent() const;           // retorna componente X do vetor
-    float YComponent() const;           // retorna componente Y do vetor
+    void Scale(float factor);           // amplia ou reduz vetor por um fator
+    void ScaleTo(float value);          // ajusta rotação para valor indicado
+
+    float X() const;                    // retorna componente X do vetor
+    float Y() const;                    // retorna componente Y do vetor
+    float Angle() const;                // retorna componente de angulo do vetor
+    float Magnitude() const;            // retorna componente de magnitude do vetor
     float Radians() const;              // retorna ângulo em radianos
-}; 
+
+    Vector operator+(const Vector*);    // sobrecarga do operador de soma
+    Vector operator*(float);            // sobrecarga do operador de multiplicação por escalar
+    Vector operator=(const Vector*);
+};
 
 // ---------------------------------------------------------------------------------
 // Funções Membro Inline
 
-inline void Vector::ScaleTo(float value)
-{ magnitude = value; }
+// retorna componente X do vetor
+inline float Vector::X() const
+{
+    return x;
+}
 
-inline void Vector::RotateTo(float value)
-{ angle = value; }
+// retorna componente Y do vetor
+inline float Vector::Y() const
+{
+    return y;
+}
 
+// retorna componente de angulo do vetor
 inline float Vector::Angle() const
-{ return angle; }
+{
+    return angle;
+}
 
+// retorna componente de magnitude do vetor
 inline float Vector::Magnitude() const
-{ return magnitude; }
+{
+    return magnitude;
+}
 
-inline float Vector::XComponent() const
-{ return magnitude * cos(Radians()); }    
-
-inline float Vector::YComponent() const
-{ return magnitude * sin(Radians()); }    
-
+// retorna ângulo em radianos
 inline float Vector::Radians() const
-{ return float(angle * PI / 180.0); }
+{
+    return float(angle * PI / 180.0);
+}
 
 // ------------------------------------------------------------------------------
+
+
 
 #endif

@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_SPRITE_H_
 #define _PROGJOGOS_SPRITE_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Image.h"
@@ -27,7 +21,7 @@ using namespace DirectX;
 
 // ---------------------------------------------------------------------------------
 
-struct DLL Layer
+struct Layer
 {
     static const float FRONT;
     static const float UPPER;
@@ -37,7 +31,7 @@ struct DLL Layer
 };
 
 // definição de cor para o sprite
-struct DLL Color
+struct Color
 {
     float r;
     float g;
@@ -77,7 +71,7 @@ struct SpriteData
 
 // ---------------------------------------------------------------------------------
 
-class DLL Sprite
+class Sprite
 {
 private:
     SpriteData sprite;              // dados do sprite 

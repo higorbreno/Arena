@@ -13,12 +13,6 @@
 #ifndef _PROGJOGOS_WINDOW_H_
 #define _PROGJOGOS_WINDOW_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 // Inclusões
 
@@ -35,7 +29,7 @@ enum WindowModes {FULLSCREEN, WINDOWED, BORDERLESS};
 
 // ---------------------------------------------------------------------------------
 
-class DLL Window
+class Window
 {
 private:
     HINSTANCE   hInstance;                                  // identificador da aplicação

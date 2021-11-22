@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_BACKGROUND_H_
 #define _PROGJOGOS_BACKGROUND_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // -------------------------------------------------------------------------------
 
 #include "Types.h"                      // tipos específicos da engine
@@ -28,7 +22,7 @@ using std::string;                      // permite usar string sem std::
 
 // -------------------------------------------------------------------------------
 
-class DLL Background
+class Background
 {
 private:
     SpriteData spriteData;              // informações do sprite 

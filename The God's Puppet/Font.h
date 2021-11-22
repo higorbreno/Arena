@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_FONT_H_
 #define _PROGJOGOS_FONT_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "TileSet.h"                            // folha de sprites
@@ -28,7 +22,7 @@ using std::string;                              // dispensa o uso do std::
 
 // ---------------------------------------------------------------------------------
 
-class DLL Font
+class Font
 {
 private:
     TileSet * fontTiles;                        // folha de caracteres

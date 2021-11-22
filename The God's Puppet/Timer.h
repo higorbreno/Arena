@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_TIMER_H_
 #define _PROGJOGOS_TIMER_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // -------------------------------------------------------------------------------
 
 #include <windows.h>                            // contador de alta precisão
@@ -25,7 +19,7 @@
 
 // -------------------------------------------------------------------------------
 
-class DLL Timer
+class Timer
 {
 private:
     LARGE_INTEGER start, end;                   // valores de início e fim do contador

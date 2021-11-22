@@ -14,12 +14,6 @@
 #ifndef _PROGJOGOS_GEOMETRY_H_
 #define _PROGJOGOS_GEOMETRY_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 #include "Types.h"                                      // tipos da engine
 #include <list>                                         // lista da STL
 using std::list;                                        // usar list sem std::
@@ -41,7 +35,7 @@ enum GeometryTypes
 // Geometry
 // ---------------------------------------------------------------------------
 
-class DLL Geometry
+class Geometry
 {
 protected:
     float x, y;                                         // posição da geometria
@@ -91,7 +85,7 @@ public:
 // Point
 // --------------------------------------------------------------------------
 
-class DLL Point : public Geometry
+class Point : public Geometry
 {
 public:
     Point();                                            // construtor padrão
@@ -106,7 +100,7 @@ public:
 // Line
 // -------------------------------------------------------------------------
 
-class DLL Line : public Geometry
+class Line : public Geometry
 {
 public:
     Point a, b;                                         // linha vai do ponto A ao ponto B
@@ -130,7 +124,7 @@ public:
 // Rect
 // --------------------------------------------------------------------------
 
-class DLL Rect : public Geometry
+class Rect : public Geometry
 {
 public:
     float left;                                         // coordenada esquerda do retângulo
@@ -152,7 +146,7 @@ public:
 // Circle
 // --------------------------------------------------------------------------
 
-class DLL Circle : public Geometry
+class Circle : public Geometry
 {
 private:
     float radius;                                       // raio do círculo
@@ -170,7 +164,7 @@ public:
 // Poly
 // --------------------------------------------------------------------------
 
-class DLL Poly : public Geometry
+class Poly : public Geometry
 {
 private:
     Circle * bbox;                                      // bounding box do polígono
@@ -200,7 +194,7 @@ public:
 // Mixed
 // --------------------------------------------------------------------------
 
-class DLL Mixed : public Geometry
+class Mixed : public Geometry
 {
 public:
     list<Geometry*> shapes;                             // lista de formas geométricas

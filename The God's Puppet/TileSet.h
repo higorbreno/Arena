@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_TILESET_H_
 #define _PROGJOGOS_TILESET_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 // inclusões
 
@@ -28,7 +22,7 @@ using std::string;
 
 // ---------------------------------------------------------------------------------
 
-class DLL TileSet
+class TileSet 
 {
 private:
     Image * image;                          // imagem da folha de sprites

@@ -96,8 +96,8 @@ void Particles::Update(float delta)
         Particle * p = *it;
 
         // atualiza a posição da partícula usando seu vetor velocidade
-        p->x += p->speed.XComponent() * delta;
-        p->y -= p->speed.YComponent() * delta;
+        p->x += p->speed.X() * delta;
+        p->y -= p->speed.Y() * delta;
         
         // calcula o percentual de vida da partícula
         timeElapsed = timer.Elapsed(p->timestamp);

@@ -12,12 +12,6 @@
 #ifndef _PROGJOGOS_RENDERER_H_
 #define _PROGJOGOS_RENDERER_H_
 
-#ifdef ENGINE_EXPORTS
-#define DLL __declspec( dllexport ) 
-#else
-#define DLL __declspec( dllimport )
-#endif
-
 // ---------------------------------------------------------------------------------
 
 #include "Window.h"                                             // cria e configura uma janela do Windows
@@ -40,7 +34,7 @@ struct Vertex
 
 // ---------------------------------------------------------------------------------
 
-class DLL Renderer
+class Renderer
 {
 private:
     Window                   * window;                          // ponteiro para janela do jogo
