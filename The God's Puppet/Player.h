@@ -51,6 +51,7 @@ public:
 	Player();
 	~Player();
 	void Update();
+	void OnCollision(Object* obj);
 	void Draw();
 };
 

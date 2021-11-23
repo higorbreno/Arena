@@ -11,6 +11,11 @@
 #include "Principal.h"
 #include "Editor.h"
 #include "Player.h"
+#include "Collider.h"
+#include "Tree.h"
+#include <fstream>
+#include "Vegetation.h"
+using std::ifstream;
 
 // ------------------------------------------------------------------------------
 
@@ -41,7 +46,52 @@ void Principal::Init()
     viewport.top = dify;
     viewport.bottom = dify + window->Height();
 
-    player->MoveTo(viewport.left + window->CenterX(), viewport.top + 190);
+    ifstream fin;
+    fin.open("3.lvl");
+
+    if (fin.is_open()) {
+        int tilesCount;
+        fin >> tilesCount;
+
+        for (int i = 0; i < tilesCount; ++i) {
+            int type, id;
+            float x, y;
+            fin >> type >> id >> x >> y;
+
+            if (type == TileType::PLAYERT) {
+                player = new Player();
+                player->MoveTo(x, y);
+                scene->Add(player, MOVING);
+            }
+            else if (type == TileType::COLLIDER) {
+                Collider* collider = new Collider(id, x, y);
+                scene->Add(collider, STATIC);
+            }
+            else if (type == TileType::OBJECT) {
+                if (id == 0 || id == 1 || id == 4 || id == 5 || id == 8 || id == 9 || 
+                    id == 19 || id == 20 || id == 22 || id == 23 || id == 24 || 
+                    id == 25 || id == 27 || id == 28 || id == 32 || id == 35) 
+                {
+                    Tree* tree = new Tree(id, x, y);
+                    scene->Add(tree, STATIC);
+                }
+                else {
+                    Vegetation* veg = new Vegetation(id, x, y);
+                    scene->Add(veg, STATIC);
+                }
+               
+            }
+            /*else if (type == TileType::ENEMY) {
+                Enemy* enemy = new Enemy(id, x, y);
+                scene->Add(enemy, MOVING);
+            }*/
+            
+        }
+        fin.close();
+    }
+
+
+    //player->MoveTo(viewport.left + window->CenterX(), viewport.top + 190);
 }
 
 // ------------------------------------------------------------------------------
@@ -85,7 +135,7 @@ void Principal::Draw()
     backg->Draw(viewport);
 
     scene->Draw();
-    scene->DrawBBox();
+    //scene->DrawBBox();
 } 
 
 // ------------------------------------------------------------------------------

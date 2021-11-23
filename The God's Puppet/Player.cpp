@@ -101,7 +101,7 @@ Player::Player()
 	speed = new Vector();
 	pointerVector = new Vector();
 
-	BBox(new Circle(32.0f));
+	BBox(new Rect(-32.0f, -32.0f, 32.0f, 32.0f));
 	type = PLAYER;
 
 	MoveTo(200.0f, 200.0f);
@@ -163,7 +163,7 @@ void Player::Update()
 		if (window->KeyDown('A'))
 			horizontalM = -1.0f;
 
-		pointerVector->setXY(window->MouseX() - x, window->MouseY() - y);
+		pointerVector->setXY(game->viewport.left + window->MouseX() - x,game->viewport.top + window->MouseY() - y);
 
 		if (window->KeyPress(VK_LBUTTON))
 			Attack();
@@ -190,6 +190,36 @@ void Player::Update()
 	}
 
 	Translate(speed->X() * gameTime, speed->Y() * gameTime);
+}
+
+void Player::OnCollision(Object* obj)
+{
+	if (obj->Type() == ObjTypes::COLLI) {
+		bool isLeft = (x - obj->X()) < 0;
+		bool isTop = (y - obj->Y()) < 0;
+
+		float dx, dy;
+
+		Rect* player = (Rect*)BBox();
+		Rect* colli = (Rect*)obj->BBox();
+
+		if (isTop)
+			dy = colli->Top() - player->Bottom();
+		else
+			dy = colli->Bottom() - player->Top();
+
+		if (isLeft)
+			dx = colli->Left() - player->Right();
+		else
+			dx = colli->Right() - player->Left();
+
+		if (abs(dx) <= abs(dy)) {
+			Translate(dx, 0);
+		}
+		else {
+			Translate(0, dy);
+		}
+	}
 }
 
 void Player::Draw()
