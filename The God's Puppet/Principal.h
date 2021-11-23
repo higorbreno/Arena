@@ -17,8 +17,10 @@
 #include "Resources.h"              // recursos utilizados no jogo (cursor, ícone, etc.) 
 #include "Game.h"                   // definição da classe jogo
 #include "Controller.h"
-#include <sstream>                  // saída para strings
 #include "Scene.h"
+#include "Player.h"
+#include <sstream>                  // saída para strings
+#include "Background.h"
 using std::stringstream;    
 
 // ------------------------------------------------------------------------------
@@ -28,8 +30,10 @@ enum ObjTypes { PLAYER, SLASH, BOOMERANG };
 class Principal : public Game
 {
 private:
+    Background* backg = nullptr;
 
 public:
+    static Player* player;
     static Scene* scene;
     static bool controllerOn;
 

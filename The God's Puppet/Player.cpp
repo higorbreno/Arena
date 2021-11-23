@@ -2,6 +2,7 @@
 #include "Principal.h"
 #include "Slash.h"
 
+
 void Player::Attack()
 {
 	if (attackCooldown <= 0.0f) {

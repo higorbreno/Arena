@@ -41,7 +41,7 @@ void Boomerang::Draw()
 
 void Boomerang::OnCollision(Object* obj)
 {
-	if (obj->Type() == PLAYER && timeToStop < 1.0f) {
+	if (obj->Type() == PLAYER && isComingBack) {
 		Principal::scene->Delete(this, MOVING);
 	}
 }

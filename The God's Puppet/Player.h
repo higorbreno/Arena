@@ -18,7 +18,6 @@ private:
 	Sprite* spr;
 	Sprite* pointer;
 
-	std::list<Boomerang*> boomerangs;
 	bool hasReleased;
 
 	int MaxHealth = 10;
@@ -47,6 +46,8 @@ private:
 	void Heal();
 
 public:
+	std::list<Boomerang*> boomerangs;
+
 	Player();
 	~Player();
 	void Update();

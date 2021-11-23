@@ -11,15 +11,15 @@
 
 #include "Engine.h"
 #include "Principal.h"
+#include "Editor.h"
 #include "Player.h"
 
 // ------------------------------------------------------------------------------
 
+Player* Principal::player = nullptr;
 Scene* Principal::scene = nullptr;
 bool Principal::controllerOn = false;
 Controller* Principal::gamepad = nullptr;
-uint Principal::xboxPlayer = PLAYER1;
-
 
 void Principal::Init()
 {
@@ -29,8 +29,20 @@ void Principal::Init()
 
     scene = new Scene();
 
-    Player* player = new Player();
+    player = new Player();
     scene->Add(player, MOVING);
+
+    backg = new Background("Resources/Map.png");
+
+    float difx = (game->Width() - window->Width()) / 2.0f;
+    float dify = (game->Height() - window->Height()) / 2.0f;
+
+    viewport.left = difx;
+    viewport.right = difx + window->Width();
+    viewport.top = dify;
+    viewport.bottom = dify + window->Height();
+
+    player->MoveTo(viewport.left + window->CenterX(), viewport.top + 190);
 }
 
 // ------------------------------------------------------------------------------
@@ -41,6 +53,28 @@ void Principal::Update()
     if (window->KeyDown(VK_ESCAPE))
         window->Close();
 
+    viewport.left = player->X() - window->CenterX();
+    viewport.right = player->X() + window->CenterX();
+    viewport.top = player->Y() - window->CenterY();
+    viewport.bottom = player->Y() + window->CenterY();
+
+    if (viewport.left < 0) {
+        viewport.left = 0;
+        viewport.right = window->Width();
+    }
+    if (viewport.top < 0) {
+        viewport.top = 0;
+        viewport.bottom = window->Height();
+    }
+    if (viewport.right > game->Width()) {
+        viewport.right = game->Width();
+        viewport.left = game->Width() - window->Width();
+    }
+    if (viewport.bottom > game->Height()) {
+        viewport.bottom = game->Height();
+        viewport.top = game->Height() - window->Height();
+    }
+
     scene->Update();
     scene->CollisionDetection();
 } 
@@ -49,6 +83,8 @@ void Principal::Update()
 
 void Principal::Draw()
 {
+    backg->Draw(viewport);
+
     scene->Draw();
     scene->DrawBBox();
 } 
@@ -79,8 +115,12 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     engine->window->Icon(IDI_ICON);
     engine->window->Cursor(IDC_CURSOR);
 
+    Game* game = new Editor();
+
+    game->Size(8960, 5760);
+
     // inicia o jogo
-    engine->Start(new Principal());
+    engine->Start(game);
 
     delete engine;
     return 0;
