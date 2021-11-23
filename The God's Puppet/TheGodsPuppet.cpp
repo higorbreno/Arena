@@ -8,7 +8,7 @@ Game* TheGodsPuppet::level = nullptr;
 
 void TheGodsPuppet::Init() {
 	audio = new Audio();
-	//audio->Add(GAMESTART, "Resources/Sounds/Menu.wav");
+	audio->Add(BUTTONOVER, "Resources/Sounds/ButtonDown.wav");
 
 	viewBBox = false;
 	level = new Menu();
@@ -17,6 +17,7 @@ void TheGodsPuppet::Init() {
 
 void TheGodsPuppet::Update() {
 	level->Update();
+    viewport = level->viewport;
 }
 
 void TheGodsPuppet::Draw() {

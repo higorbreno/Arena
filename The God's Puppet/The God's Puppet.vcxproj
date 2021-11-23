@@ -167,6 +167,7 @@
     <ClCompile Include="Boomerang.cpp" />
     <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="EditorTile.cpp" />
     <ClCompile Include="Engine.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="Boomerang.h" />
     <ClInclude Include="Buttons.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Controls.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="EditorTile.h" />
     <ClInclude Include="Engine.h" />

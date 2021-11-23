@@ -12,6 +12,9 @@ private:
 	TileSet* tileset = nullptr;
 	Animation* animacao = nullptr;
 	Buttons* play = nullptr;
+	Buttons* controls = nullptr;
+	Buttons* effects = nullptr;
+	Buttons* quit = nullptr;
 	Mouse* mouse = nullptr;
 
 public:

@@ -6,7 +6,7 @@
 #include "Font.h"
 #include "Resources.h"
 
-enum Sounds { };
+enum Sounds { BUTTONOVER };
 
 class TheGodsPuppet : public Game {
 private:
