@@ -1,14 +1,18 @@
-#ifndef CONTROLS_H
-#define CONTROLS_H
+#ifndef Effects_H
+#define Effects_H
 
 #include "Resources.h"
 #include "Mouse.h"
 #include "Buttons.h"
 
-class Controls : public Game {
+class Effects : public Game {
 private:
-	Sprite* background = nullptr;
+	Sprite* background;
+	Sprite* backgrounds[6];
 	Buttons* back = nullptr;
+	Buttons* arrowR = nullptr;
+	Buttons* arrowL = nullptr;
+	int contagem = 0;
 	Mouse* mouse = nullptr;
 
 public:
@@ -20,4 +24,3 @@ public:
 
 
 #endif
-

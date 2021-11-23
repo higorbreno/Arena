@@ -1,18 +1,17 @@
-#ifndef MENU_H
-#define MENU_H
+#ifndef GAMEOVER_H
+#define GAMEOVER_H
 
 #include "Resources.h"
 #include "Mouse.h"
 #include "Buttons.h"
 
-class Menu : public Game {
+class GameOver : public Game {
 private:
 
 	Sprite* background = nullptr;
-	Buttons* play = nullptr;
-	Buttons* controls = nullptr;
-	Buttons* effects = nullptr;
-	Buttons* quit = nullptr;
+	Buttons* continuar = nullptr;
+	Buttons* restart = nullptr;
+	Buttons* back = nullptr;
 	Mouse* mouse = nullptr;
 
 public:
@@ -24,3 +23,4 @@ public:
 
 
 #endif
+
