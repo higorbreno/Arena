@@ -93,7 +93,7 @@ void Editor::Draw()
 	backg->Draw(viewport);
 
 	scene->Draw();
-	scene->DrawBBox();
+	//scene->DrawBBox();
 }
 
 void Editor::Finalize()

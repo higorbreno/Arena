@@ -44,7 +44,7 @@ EditorTile::EditorTile(float x, float y, TileType t, int id)
 		break;
 	case TileType::OBJECT:
 		spr = new Sprite(objects[id]);
-		BBox(new Rect(-32.0f, -32.0f, 32.0f, 32.0f));
+		BBox(new Rect(-8.0f, -8.0f, 8.0f, 8.0f));
 		break;
 	}
 }
