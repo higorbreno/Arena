@@ -8,8 +8,6 @@
 // Descrição:   Desenhando e movimentando um background formado por blocos
 //
 **********************************************************************************/
-
-#include "Engine.h"
 #include "Principal.h"
 #include "Editor.h"
 #include "Player.h"
@@ -23,6 +21,7 @@ Controller* Principal::gamepad = nullptr;
 
 void Principal::Init()
 {
+    game->Size(8960, 5760);
     gamepad = new Controller();
 
     controllerOn = gamepad->Initialize();
@@ -96,35 +95,4 @@ void Principal::Finalize()
     delete scene;
     delete gamepad;
 }
-
-
-// ------------------------------------------------------------------------------
-//                                  WinMain                                      
-// ------------------------------------------------------------------------------
-
-int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, 
-                     _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
-{
-    Engine * engine = new Engine();
-
-    // configura motor
-    engine->window->Mode(WINDOWED);
-    engine->window->Size(1280, 640);
-    engine->window->Color(0, 0, 0);
-    engine->window->Title("The Gods' Puppet");
-    engine->window->Icon(IDI_ICON);
-    engine->window->Cursor(IDC_CURSOR);
-
-    Game* game = new Editor();
-
-    game->Size(8960, 5760);
-
-    // inicia o jogo
-    engine->Start(game);
-
-    delete engine;
-    return 0;
-}
-
-// ----------------------------------------------------------------------------
 
