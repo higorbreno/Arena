@@ -33,9 +33,6 @@ void Principal::Init()
 
     scene = new Scene();
 
-    player = new Player();
-    scene->Add(player, MOVING);
-
     backg = new Background("Resources/Map.png");
 
     float difx = (game->Width() - window->Width()) / 2.0f;

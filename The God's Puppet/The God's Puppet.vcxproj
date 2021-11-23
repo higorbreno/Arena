@@ -166,6 +166,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Boomerang.cpp" />
     <ClCompile Include="Buttons.cpp" />
+    <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="Controls.cpp" />
     <ClCompile Include="Editor.cpp" />
@@ -195,7 +196,9 @@
     <ClCompile Include="TheGodsPuppet.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Vegetation.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +207,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Boomerang.h" />
     <ClInclude Include="Buttons.h" />
+    <ClInclude Include="Collider.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="Controls.h" />
     <ClInclude Include="Editor.h" />
@@ -234,8 +238,10 @@
     <ClInclude Include="TheGodsPuppet.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="Types.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="Vegetation.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

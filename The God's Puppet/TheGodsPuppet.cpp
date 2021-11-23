@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "TheGodsPuppet.h"
+#include "Editor.h"
 #include "Menu.h"
 
 Audio* TheGodsPuppet::audio = nullptr;
