@@ -10,9 +10,10 @@
 **********************************************************************************/
 #include "Principal.h"
 #include "Player.h"
-#include <fstream>
 #include "Enemy.h"
 #include "Random.h"
+#include "TheGodsPuppet.h"
+#include <fstream>
 using std::ifstream;
 
 // ------------------------------------------------------------------------------
@@ -36,14 +37,6 @@ void Principal::Init()
     player = new Player();
     scene->Add(player, MOVING);
 
-    RandI r1(0, 4);
-    RandF r2(1200, 2000);
-
-    for (int i = 0; i < 10; ++i) {
-        Enemy* enemy = new Enemy(EnemyType(r1.Rand()), r2.Rand(), r2.Rand());
-        scene->Add(enemy, MOVING);
-    }
-
     hud = new Hud();
     scene->Add(hud, STATIC);
 
@@ -56,12 +49,27 @@ void Principal::Init()
     viewport.bottom = dify + window->Height();
 
     player->MoveTo(viewport.left + window->CenterX(), viewport.top);
+    TheGodsPuppet::audio->Play(BOSSAREA, true);
 }
 
 // ------------------------------------------------------------------------------
 
 void Principal::Update()
 {
+    if (Enemy::count <= 0) {
+        RandI r1(0, 4);
+        RandI r(0, 1);
+        RandF r2(-1600, -800);
+        RandF r3(800, 1600);
+
+        lastWave += int(player->score * 0.1f);
+
+        for (int i = 0; i < lastWave; ++i) {
+            Enemy* enemy = new Enemy(EnemyType(r1.Rand()), (r.Rand()) ? r2.Rand() : r3.Rand(), (r.Rand()) ? r2.Rand() : r3.Rand());
+            scene->Add(enemy, MOVING);
+        }
+    }
+
     // sai com o pressionamento da tecla ESC
     if (window->KeyDown(VK_ESCAPE))
         window->Close();

@@ -15,6 +15,7 @@ public:
 	Slash(float px, float py, float rot, int dmg = 2);
 	~Slash();
 	void Update();
+	void OnCollision(Object* obj);
 	void Draw();
 };
 

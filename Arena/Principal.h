@@ -33,6 +33,7 @@ class Principal : public Game
 private:
     Background* backg = nullptr;
     Hud* hud = nullptr;
+    int lastWave = 5;
 
 public:
     static Player* player;

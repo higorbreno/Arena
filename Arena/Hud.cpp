@@ -50,6 +50,8 @@ Hud::~Hud()
 void Hud::Update() {
     Health();
     Abilities();
+    string aux = std::to_string((int)Principal::player->score);
+    TheGodsPuppet::arcade30->Draw(50.0f, 600.0f, "Score: " + aux, { 1.0f, 1.0f, 1.0f, 1.0f }, Layer::FRONT);
 }
 
 // -------------------------------------------------------------------------------

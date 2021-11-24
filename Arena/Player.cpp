@@ -2,6 +2,7 @@
 #include "Principal.h"
 #include "Slash.h"
 
+int Player::score = 0;
 
 void Player::Attack()
 {
@@ -117,6 +118,7 @@ Player::~Player()
 
 void Player::Update()
 {
+	color = { 1,1,1,1 };
 	horizontalM = 0.0f;
 	verticalM = 0.0f;
 
@@ -130,6 +132,15 @@ void Player::Update()
 		knockbackCooldown -= gameTime;
 	if (healCooldown > 0.0f)
 		healCooldown -= gameTime;
+
+	if (weakCooldown > 0.0f)
+		weakCooldown -= gameTime;
+	if (burnCooldown > 0.0f)
+		burnCooldown -= gameTime;
+	if (slowCooldown > 0.0f)
+		slowCooldown -= gameTime;
+	if (dmgCooldown > 0.0f)
+		dmgCooldown -= gameTime;
 
 	if (Principal::controllerOn) {
 		Principal::gamepad->UpdateState();
@@ -183,6 +194,20 @@ void Player::Update()
 	if(horizontalM || verticalM)
 		speed->ScaleTo(300.0f);
 
+	if (slowCooldown > 0.0f) {
+		speed->Scale(0.75f);
+		color.b = 10;
+	}
+
+	if (burnCooldown > 0.0f && burnCooldown < 1.5f && !hasBurnFirst) {
+		health--;
+		hasBurnFirst = true;
+	}
+	else if (burnCooldown <= 0.0f && hasBurnFirst) {
+		health--;
+		hasBurnFirst = false;
+	}
+
 	if (isSpeed) {
 		speed->Scale(2);
 		if (speedCooldown < SPEED_COOLDOWN - 1.0f)
@@ -190,6 +215,15 @@ void Player::Update()
 	}
 
 	Translate(speed->X() * gameTime, speed->Y() * gameTime);
+
+	if (x < 64)
+		MoveTo(64, y);
+	if (x > game->Width() - 64)
+		MoveTo(game->Width() - 64, y);
+	if (y < 80)
+		MoveTo(x, 80);
+	if (y > game->Height() - 200)
+		MoveTo(x, game->Height() - 200);
 }
 
 void Player::OnCollision(Object* obj)
@@ -199,7 +233,7 @@ void Player::OnCollision(Object* obj)
 
 void Player::Draw()
 {
-	spr->Draw(x, y, Layer::MIDDLE, scale, rotation, Color(10, 10, 10, 1));
+	spr->Draw(x, y, Layer::MIDDLE, scale, rotation, color);
 	pointer->Draw(x, y, 
 		(pointerVector->Angle() >= 180 && pointerVector->Angle() < 360) ? Layer::LOWER : Layer::MIDDLE, 
 		scale, pointerVector->Angle(), 

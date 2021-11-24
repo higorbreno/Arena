@@ -1,6 +1,7 @@
 #include "Boomerang.h"
 #include "Principal.h"
 #include "Player.h"
+#include "Enemy.h"
 
 Boomerang::Boomerang(Vector* v)
 {
@@ -34,6 +35,7 @@ void Boomerang::Update()
 	}
 	else if (timeToBack <= 0.0f) {
 		ComeBack();
+		Principal::player->boomerangs.clear();
 	}
 	timeToBack -= gameTime;
 }
@@ -47,6 +49,11 @@ void Boomerang::OnCollision(Object* obj)
 {
 	if (obj->Type() == PLAYER && isComingBack) {
 		Principal::scene->Delete(this, MOVING);
+	}
+
+	if (obj->Type() == ObjTypes::ENEMY) {
+		Enemy* e = (Enemy*)obj;
+		e->DoMagic(4);
 	}
 }
 
