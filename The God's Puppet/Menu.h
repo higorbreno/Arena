@@ -4,6 +4,7 @@
 #include "Resources.h"
 #include "Mouse.h"
 #include "Buttons.h"
+#include "Hud.h"
 
 class Menu : public Game {
 private:
