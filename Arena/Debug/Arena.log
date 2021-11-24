@@ -1,0 +1,14 @@
+﻿  Boomerang.cpp
+  Buttons.cpp
+  GameOver.cpp
+  Hud.cpp
+  Menu.cpp
+  Player.cpp
+  Principal.cpp
+  Slash.cpp
+C:\Users\higor\source\repos\Arena\Arena\Player.cpp(136,41): warning C4244: '=': conversão de 'long' para 'float', possível perda de dados
+C:\Users\higor\source\repos\Arena\Arena\Player.cpp(137,39): warning C4244: '=': conversão de 'long' para 'float', possível perda de dados
+C:\Users\higor\source\repos\Arena\Arena\Player.cpp(139,42): warning C4244: '=': conversão de 'long' para 'float', possível perda de dados
+C:\Users\higor\source\repos\Arena\Arena\Player.cpp(141,40): warning C4244: '=': conversão de 'long' para 'float', possível perda de dados
+C:\Users\higor\source\repos\Arena\Arena\Hud.cpp(56,17): warning C4101: 'auxY': variável local não referenciada
+  Arena.vcxproj -> C:\Users\higor\source\repos\Arena\Debug\Arena.exe
