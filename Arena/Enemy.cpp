@@ -3,10 +3,10 @@
 #include "Principal.h"
 #include "Geometry.h"
 
-Enemy::Enemy(EnemyType id, float x, float y)
+Enemy::Enemy(EnemyType i, float x, float y)
 {
 	type = ObjTypes::ENEMY;
-	id = id;
+	id = i;
 
 	if (id == EnemyType::ICEZOMBIE) {
 		spr = new Sprite("Resources/Enemies/0.png");
@@ -17,7 +17,7 @@ Enemy::Enemy(EnemyType id, float x, float y)
 	else if (id == EnemyType::GOBLIN) {
 		spr = new Sprite("Resources/Enemies/1.png");
 		BBox(new Rect(-8.0f, -4.0f, 10.0f, 16.0f));
-		vel = 300;
+		vel = 250;
 		turnVel = 20;
 	}
 	else if (id == EnemyType::GHOST) {
@@ -56,27 +56,31 @@ void Enemy::Update()
 {
 	float distance = Point::Distance(Point(x, y), Point(Principal::player->X(), Principal::player->Y()));
 
-	if (type == EnemyType::ICEZOMBIE) {
-		if (distance > 300)
+	if (id == EnemyType::ICEZOMBIE) {
+		if (distance > 350)
 			Follow();
+		else if (distance > 300)
+			direction->setXY(0, 0);
 		else
 			KeepDistance();
-	}
-	else if (type == EnemyType::GOBLIN) {
+
+	} else if (id == EnemyType::GOBLIN) {
 		Follow();
 	}
-	else if (type == EnemyType::GHOST) {
+	else if (id == EnemyType::GHOST) {
 		if (distance > 100)
 			SoftFollow();
 		else
 			SoftKeepDistance();
 	}
-	else if (type == EnemyType::ZOMBIE) {
+	else if (id == EnemyType::ZOMBIE) {
 		Follow();
 	}
-	else if (type == EnemyType::DEMON) {
-		if (distance > 300)
+	else if (id == EnemyType::DEMON) {
+		if (distance > 350)
 			Follow();
+		else if (distance > 300)
+			direction->setXY(0, 0);
 		else
 			KeepDistance();
 	}
