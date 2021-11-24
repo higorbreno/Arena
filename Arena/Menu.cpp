@@ -13,6 +13,8 @@ void Menu::Init() {
 	controls = new Buttons(window->CenterX(), 420.0f, CONTROLS);
 	effects = new Buttons(window->CenterX(), 480.0f, EFFECTS);
 	quit = new Buttons(window->CenterX(), 540.0f, QUIT);
+
+	TheGodsPuppet::audio->Play(MENU, true);
 }
 
 void Menu::Update() {
@@ -45,6 +47,7 @@ void Menu::Update() {
 
 	//VERIFICAR SE O MOUSE ESTÁ CLICANDO EM ALGUM BOTÃO
 	if (play->MouseOver() && mouse->Clicked()) {
+		TheGodsPuppet::audio->Stop(MENU);
 		TheGodsPuppet::NextLevel<Principal>();
 	} else if (controls->MouseOver() && mouse->Clicked()) {
 		TheGodsPuppet::NextLevel<Controls>();

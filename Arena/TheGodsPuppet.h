@@ -16,8 +16,11 @@ enum Inimigos { DEMON1, DEMON2, DEMON3, GHOST1, GHOST2,
 class TheGodsPuppet : public Game {
 private:
 	static Game* level;
-public:
 
+public:
+	static Font* arcade15;
+	static Font* arcade30;
+	static Font* arcade55;
 	static Audio* audio;
 	static Audio* inimigosAudio;
 

@@ -14,6 +14,16 @@ private:
     Sprite* fullHeart = nullptr;
     Sprite* halfHeart = nullptr;
     Sprite* emptyHeart = nullptr;
+
+
+    Sprite* baseA = nullptr;
+    Sprite* knock = nullptr;
+    Sprite* brang = nullptr;
+    Sprite* speed = nullptr;
+    Sprite* heal = nullptr;
+    Sprite* cd = nullptr;
+
+    Sprite* abilities[5];
     Sprite* heart[5];
 
 public:
@@ -24,6 +34,7 @@ public:
     void Draw();                        // desenho
 
     void Health();
+    void Abilities();
 
 };
 

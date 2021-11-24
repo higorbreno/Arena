@@ -6,6 +6,9 @@ Audio* TheGodsPuppet::audio = nullptr;
 Audio* TheGodsPuppet::inimigosAudio = nullptr;
 bool TheGodsPuppet::viewBBox = false;
 Game* TheGodsPuppet::level = nullptr;
+Font* TheGodsPuppet::arcade15 = nullptr;
+Font* TheGodsPuppet::arcade30 = nullptr;
+Font* TheGodsPuppet::arcade55 = nullptr;
 
 void TheGodsPuppet::Init() {
 	audio = new Audio();
@@ -37,6 +40,15 @@ void TheGodsPuppet::Init() {
     inimigosAudio->Add(ICEZOMBIEATTACK, "Resources/Sounds/Enemies/IceZombieAttack.wav");
     inimigosAudio->Add(MELEEATTACK, "Resources/Sounds/Enemies/MeleeAttack.wav");
 
+    arcade15 = new Font("Resources/Fonts/Arcade15.png");
+    arcade15->Spacing("Resources/Fonts/Arcade15.dat");
+
+    arcade30 = new Font("Resources/Fonts/Arcade30.png");
+    arcade30->Spacing("Resources/Fonts/Arcade30.dat");
+
+    arcade55 = new Font("Resources/Fonts/Arcade55.png");
+    arcade55->Spacing("Resources/Fonts/Arcade55.dat");
+
 	viewBBox = false;
 	level = new Menu();
 	level->Init();
@@ -56,6 +68,9 @@ void TheGodsPuppet::Finalize() {
 	delete level;
     delete audio;
     delete inimigosAudio;
+    delete arcade15;
+    delete arcade30;
+    delete arcade55;
 
 }
 
