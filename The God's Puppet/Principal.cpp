@@ -15,6 +15,7 @@
 #include "Tree.h"
 #include <fstream>
 #include "Vegetation.h"
+#include "SpawnPoint.h"
 using std::ifstream;
 
 // ------------------------------------------------------------------------------
@@ -78,10 +79,10 @@ void Principal::Init()
                 }
                
             }
-            /*else if (type == TileType::ENEMY) {
-                Enemy* enemy = new Enemy(id, x, y);
-                scene->Add(enemy, MOVING);
-            }*/
+            else if (type == TileType::ENEMY) {
+                SpawnPoint* sp = new SpawnPoint(id, x, y);
+                scene->Add(sp, STATIC);
+            }
             
         }
         fin.close();
