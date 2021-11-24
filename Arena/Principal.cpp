@@ -11,6 +11,8 @@
 #include "Principal.h"
 #include "Player.h"
 #include <fstream>
+#include "Enemy.h"
+#include "Random.h"
 using std::ifstream;
 
 // ------------------------------------------------------------------------------
@@ -33,6 +35,14 @@ void Principal::Init()
 
     player = new Player();
     scene->Add(player, MOVING);
+
+    RandI r1(0, 4);
+    RandF r2(1200, 2000);
+
+    for (int i = 0; i < 10; ++i) {
+        Enemy* enemy = new Enemy(EnemyType(r1.Rand()), r2.Rand(), r2.Rand());
+        scene->Add(enemy, MOVING);
+    }
 
     hud = new Hud();
     scene->Add(hud, STATIC);

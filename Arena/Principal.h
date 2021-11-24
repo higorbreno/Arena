@@ -26,7 +26,7 @@ using std::stringstream;
 
 // ------------------------------------------------------------------------------
 
-enum ObjTypes { PLAYER, SLASH, BOOMERANG };
+enum ObjTypes { PLAYER, ENEMY, SLASH, BOOMERANG };
 
 class Principal : public Game
 {
