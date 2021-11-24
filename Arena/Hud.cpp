@@ -8,7 +8,7 @@ Hud::Hud()
     halfHeart = new Sprite("Resources/UI/Heart/HalfHeart.png");
     emptyHeart = new Sprite("Resources/UI/Heart/EmptyHeart.png");
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
         heart[i] = fullHeart;
     }
 
@@ -58,7 +58,7 @@ void Hud::Update() {
 
 void Hud::Health() {
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
         heart[i] = emptyHeart;
     }
 
@@ -143,7 +143,7 @@ void Hud::Draw()
     auxX = 45.0f;
 
     //Corações
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 10; i++) {
         heart[i]->Draw(game->viewport.left + auxX, game->viewport.top + 25.0f, Layer::FRONT);
         auxX += 35.0f;
     }

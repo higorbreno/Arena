@@ -24,7 +24,7 @@ private:
     Sprite* cd = nullptr;
 
     Sprite* abilities[5];
-    Sprite* heart[5];
+    Sprite* heart[10];
 
 public:
     Hud();                              // construtor

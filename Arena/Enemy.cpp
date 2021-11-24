@@ -6,47 +6,63 @@
 
 int Enemy::count = 0;
 
+enum estado {ESQUERDA, DIREITA};
+
 Enemy::Enemy(EnemyType i, float x, float y)
 {
 	count++;
 	type = ObjTypes::ENEMY;
 	id = i;
 
+	
+
+
 	if (id == EnemyType::ICEZOMBIE) {
-		spr = new Sprite("Resources/Enemies/0.png");
+		ts = new TileSet("Resources/Enemies/IceZombieAnim.png", 2, 8);
+		a = new Animation(ts, 0.5f, true);
 		BBox(new Rect(-8.0f, -16.0f, 8.0f, 16.0f));
 		vel = 200;
 		turnVel = 20;
 		health = 10;
 	}
 	else if (id == EnemyType::GOBLIN) {
-		spr = new Sprite("Resources/Enemies/1.png");
+		ts = new TileSet("Resources/Enemies/GoblinAnim.png", 2, 8);
+		a = new Animation(ts, 0.5f, true);
 		BBox(new Rect(-8.0f, -4.0f, 10.0f, 16.0f));
 		vel = 250;
 		turnVel = 20;
 		health = 5;
 	}
 	else if (id == EnemyType::GHOST) {
-		spr = new Sprite("Resources/Enemies/2.png");
+		ts = new TileSet("Resources/Enemies/GhostAnim.png", 2, 8);
+		a = new Animation(ts, 0.5f, true);
 		BBox(new Rect(-10.0f, -18.0f, 13.0f, 23.0f));
 		vel = 200;
 		turnVel = 20;
 		health = 15;
 	}
 	else if (id == EnemyType::ZOMBIE) {
-		spr = new Sprite("Resources/Enemies/3.png");
+		ts = new TileSet("Resources/Enemies/ZombieAnim.png", 2, 8);
+		a = new Animation(ts, 0.5f, true);
 		BBox(new Rect(-16.0f, -18.0f, 16.0f, 36.0f));
 		vel = 100;
 		turnVel = 20;
 		health = 20;
 	}
 	else if (id == EnemyType::DEMON) {
-		spr = new Sprite("Resources/Enemies/4.png");
+		ts = new TileSet("Resources/Enemies/DemonAnim.png", 2, 8);
+		a = new Animation(ts, 0.5f, true);
 		BBox(new Rect(-16.0f, -20.0f, 18.0f, 36.0f));
 		vel = 200;
 		turnVel = 20;
 		health = 10;
 	}
+
+	uint esquerda[] = { 15,14,13,12 };
+	uint direita[] = { 8, 9,10,11 };
+
+	a->Add(ESQUERDA,esquerda, 4);
+	a->Add(DIREITA, direita, 4);
 
 	RandF rand(0.0f, 360.0f);
 
@@ -57,7 +73,8 @@ Enemy::Enemy(EnemyType i, float x, float y)
 
 Enemy::~Enemy()
 {
-	delete spr;
+	delete ts;
+	delete a;
 	delete direction;
 	--count;
 }
@@ -116,10 +133,21 @@ void Enemy::Update()
 	else if (id == EnemyType::DEMON)
 		AttackDistance(1);
 
+	if (direction->X() < 0) {
+		a->Select(ESQUERDA);
+	}
+	else {
+		a->Select(DIREITA);
+	}
+
+	a->NextFrame();
+
 	if (health <= 0) {
 		Principal::player->score++;
 		Principal::scene->Delete(this, MOVING);
 	}
+
+
 }
 
 void Enemy::OnCollision(Object* obj)
@@ -170,7 +198,7 @@ void Enemy::OnCollision(Object* obj)
 
 void Enemy::Draw()
 {
-	spr->Draw(x, y);
+	a->Draw(x, y);
 }
 
 void Enemy::Follow()

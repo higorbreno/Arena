@@ -1,13 +1,17 @@
 #include "Projectile.h"
 #include "Principal.h"
+#include "TheGodsPuppet.h"
+
 Projectile::Projectile(int i, float px, float py, Vector* dir)
 {
 	id = i;
 	if (id == 0) {
 		spr = new Sprite("Resources/Enemies/Attacks/Ice.png");
+		TheGodsPuppet::inimigosAudio->Play(ICEZOMBIEATTACK);
 	}
 	else if (id == 1) {
 		spr = new Sprite("Resources/Enemies/Attacks/Fire.png");
+		TheGodsPuppet::inimigosAudio->Play(DEMONATTACK);
 	}
 
 	BBox(new Circle(16.0f));

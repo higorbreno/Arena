@@ -97,10 +97,16 @@ Player::Player()
 	verticalL = 0.0f;
 	verticalM = 0.0f;
 
-	spr = new Sprite("Resources/Player.png");
 	pointer = new Sprite("Resources/Sword.png");
 	speed = new Vector();
 	pointerVector = new Vector();
+
+	ts[0] = new TileSet("Resources/MainCharacter/NinjaFrog/Run-Right.png", 32, 32, 11, 11);
+	as[0] = new Animation(ts[0], 0.1f, true);
+	ts[1] = new TileSet("Resources/MainCharacter/NinjaFrog/Run-Left.png", 32, 32, 11, 11);
+	as[1] = new Animation(ts[1], 0.1f, true);
+
+	atual = as[0];
 
 	BBox(new Rect(-32.0f, -32.0f, 32.0f, 32.0f));
 	type = PLAYER;
@@ -110,7 +116,10 @@ Player::Player()
 
 Player::~Player()
 {
-	delete spr;
+	delete ts[0];
+	delete as[0];
+	delete ts[1];
+	delete as[1];
 	delete pointer;
 	delete speed;
 	delete pointerVector;
@@ -216,6 +225,16 @@ void Player::Update()
 
 	Translate(speed->X() * gameTime, speed->Y() * gameTime);
 
+	if (horizontalM < 0) {
+		atual = as[1];
+	}
+
+	if (horizontalM > 0) {
+		atual = as[0];
+	}
+
+	atual->NextFrame();
+
 	if (x < 64)
 		MoveTo(64, y);
 	if (x > game->Width() - 64)
@@ -233,7 +252,7 @@ void Player::OnCollision(Object* obj)
 
 void Player::Draw()
 {
-	spr->Draw(x, y, Layer::MIDDLE, scale, rotation, color);
+	atual->Draw(x, y, Layer::MIDDLE, scale, rotation, color);
 	pointer->Draw(x, y, 
 		(pointerVector->Angle() >= 180 && pointerVector->Angle() < 360) ? Layer::LOWER : Layer::MIDDLE, 
 		scale, pointerVector->Angle(), 

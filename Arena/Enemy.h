@@ -3,6 +3,7 @@
 
 #include "Object.h"
 #include "Animation.h"
+#include "TileSet.h"
 #include "Vector.h"
 
 enum EnemyType { ICEZOMBIE, GOBLIN, GHOST, ZOMBIE, DEMON };
@@ -13,6 +14,8 @@ private:
 	Sprite* spr;
 	EnemyType id;
 	Vector* direction;
+	TileSet* ts;
+	Animation* a;
 	int vel;
 	int turnVel;
 	float randMovTime;

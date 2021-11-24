@@ -3,6 +3,7 @@
 
 #include "Object.h"
 #include "Animation.h"
+#include "TileSet.h"
 #include "Vector.h"
 #include "Controller.h"
 #include "Boomerang.h"
@@ -15,12 +16,16 @@ private:
 	bool hasMoved = false;
 	Vector* speed;
 	Vector* pointerVector;
-	Sprite* spr;
 	Sprite* pointer;
+
+	TileSet* ts[2];
+	Animation* as[2];
+
+	Animation* atual = nullptr;
 
 	Color color = { 1,1,1,1 };
 
-	int MaxHealth = 10;
+	int MaxHealth = 20;
 
 	bool isSpeed = false;
 	bool hasBurnFirst = false;
@@ -51,7 +56,7 @@ public:
 	float slowCooldown = 0.0f;
 	float dmgCooldown = 0.0f;
 
-	int health = 10;
+	int health = 20;
 	bool hasReleased;
 	std::list<Boomerang*> boomerangs;
 

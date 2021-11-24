@@ -18,7 +18,7 @@ void TheGodsPuppet::Init() {
     audio->Add(MENU, "Resources/Sounds/Menu.wav");
     audio->Add(BOSSAREA, "Resources/Sounds/Areas/BossArea.wav");
     audio->Add(BASICATTACK, "Resources/Sounds/Abilities/BasicAttack.wav");
-    audio->Add(BRANG, "Resources/Sounds/Abilities/Boomerang.wav");
+    audio->Add(BRANG, "Resources/Sounds/Abilities/Boomerang.wav", 10);
     audio->Add(KBACK, "Resources/Sounds/Abilities/KnockBack.wav");
     audio->Add(HEAL, "Resources/Sounds/Abilities/Heal.wav");
     audio->Add(SPEED, "Resources/Sounds/Abilities/SpeedSpell.wav");
@@ -36,8 +36,8 @@ void TheGodsPuppet::Init() {
     inimigosAudio->Add(ZOMBIE1, "Resources/Sounds/Enemies/Zombie/Zombie1.wav");
     inimigosAudio->Add(ZOMBIE2, "Resources/Sounds/Enemies/Zombie/Zombie2.wav");
     inimigosAudio->Add(ZOMBIE3, "Resources/Sounds/Enemies/Zombie/Zombie3.wav");
-    inimigosAudio->Add(DEMONATTACK, "Resources/Sounds/Enemies/DemonAttack.wav");
-    inimigosAudio->Add(ICEZOMBIEATTACK, "Resources/Sounds/Enemies/IceZombieAttack.wav");
+    inimigosAudio->Add(DEMONATTACK, "Resources/Sounds/Enemies/DemonAttack.wav", 20);
+    inimigosAudio->Add(ICEZOMBIEATTACK, "Resources/Sounds/Enemies/IceZombieAttack.wav", 20);
     inimigosAudio->Add(MELEEATTACK, "Resources/Sounds/Enemies/MeleeAttack.wav");
 
     arcade15 = new Font("Resources/Fonts/Arcade15.png");

@@ -1,4 +1,5 @@
 #include "Boomerang.h"
+#include "TheGodsPuppet.h"
 #include "Principal.h"
 #include "Player.h"
 #include "Enemy.h"
@@ -11,15 +12,22 @@ Boomerang::Boomerang(Vector* v)
 	isComingBack = false;
 	direction = new Vector();
 	direction->setPolar(v->Angle(), 400.0f);
-	spr = new Sprite("Resources/Boomerang.png");
+
+	ts = new TileSet ("Resources/MainCharacter/Abilities/Animations/BoomerangAnimation.png", 32, 32, 4, 4);
+	animation = new Animation(ts, 0.1, true);
+
 	type = BOOMERANG;
 	BBox(new Circle(16.0f));
 	MoveTo(Principal::player->X(), Principal::player->Y());
+
+	TheGodsPuppet::audio->Play(BRANG, true);
 }
 
 Boomerang::~Boomerang()
 {
-	delete spr;
+	TheGodsPuppet::audio->Stop(BRANG);
+	delete ts;
+	delete animation;
 	delete direction;
 }
 
@@ -38,11 +46,12 @@ void Boomerang::Update()
 		Principal::player->boomerangs.clear();
 	}
 	timeToBack -= gameTime;
+	animation->NextFrame();
 }
 
 void Boomerang::Draw()
 {
-	spr->Draw(x, y, Layer::FRONT, scale, rotation, Color(1,1,1,1));
+	animation->Draw(x, y, Layer::FRONT, scale, rotation, Color(1,1,1,1));
 }
 
 void Boomerang::OnCollision(Object* obj)

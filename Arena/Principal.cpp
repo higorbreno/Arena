@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Random.h"
+#include "GameOver.h"
 #include "TheGodsPuppet.h"
 #include <fstream>
 using std::ifstream;
@@ -98,6 +99,11 @@ void Principal::Update()
 
     scene->Update();
     scene->CollisionDetection();
+
+    if (player->health <= 0) {
+        TheGodsPuppet::audio->Stop(BOSSAREA);
+        TheGodsPuppet::NextLevel<GameOver>();
+    }
 } 
 
 // ------------------------------------------------------------------------------

@@ -9,7 +9,6 @@ class GameOver : public Game {
 private:
 
 	Sprite* background = nullptr;
-	Buttons* continuar = nullptr;
 	Buttons* restart = nullptr;
 	Buttons* back = nullptr;
 	Mouse* mouse = nullptr;

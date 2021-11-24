@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "Animation.h"
+#include "TileSet.h"
 #include "Vector.h"
 
 #ifndef BOOMERANG_H
@@ -7,8 +8,10 @@
 
 class Boomerang : public Object {
 private:
-	Sprite* spr;
+
 	Vector* direction;
+	Animation* animation;
+	TileSet* ts;
 	float timeToStop;
 	float timeToBack;
 	int damage;
